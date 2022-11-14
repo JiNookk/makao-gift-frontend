@@ -12,5 +12,5 @@ test('Header', () => {
   screen.getByText('홈');
   screen.getByText('스토어');
   screen.getByText('주문조회');
-  screen.getByText('내 잔액: 50000원');
+  screen.getByText('내 잔액: 50,000원');
 });

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 import useProductsStore from '../hooks/useProductsStore';
 import numberFormat from '../numberFormat';
 
@@ -20,15 +21,23 @@ const ItemImage = styled.img`
 `;
 
 export default function Products() {
+  const navigate = useNavigate();
   const productsStore = useProductsStore();
-
   const { products } = productsStore;
+
+  const handleClickItem = (id) => {
+    // productsStore.selectItem(id);
+    navigate(`/products/${id}`);
+  };
 
   return (
     <ItemContainer>
       {products.map((product) => (
-        <Item key={product.id}>
-
+        <Item
+          className="item"
+          key={product.id}
+          onClick={() => handleClickItem(product.id)}
+        >
           <ItemImage alt="test" src={product.imagePath} />
           <p>{product.manufacturer}</p>
           <p>{product.name}</p>
