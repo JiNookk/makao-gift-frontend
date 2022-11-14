@@ -12,14 +12,16 @@ export default function Pages() {
 
   return (
     <ul>
-      {pages.map((page) => (
-        <button
-          key={page.productPage}
-          onClick={() => handlePage(page.productPage)}
-        >
-          {page.productPage}
-        </button>
-      ))}
+      {pages.length > 1
+        ? pages.map((page) => (
+          <button
+            className="page"
+            key={page.productPage}
+            onClick={() => handlePage(page.productPage)}
+          >
+            {page.productPage}
+          </button>
+        )) : null}
     </ul>
   );
 }

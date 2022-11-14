@@ -23,8 +23,6 @@ export default class ProductsStore extends Store {
     this.page = page;
 
     await this.fetchProducts();
-    console.log(page);
-    console.log(this.products);
 
     this.publish();
   }

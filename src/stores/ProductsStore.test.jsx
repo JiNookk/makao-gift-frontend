@@ -34,8 +34,7 @@ describe('ProductsStore', () => {
         const page = productsStore.pages[0];
 
         expect(productsStore.pages.length).toBe(1);
-        expect(page.id).toBe(1);
-        expect(page.value).toBe(1);
+        expect(page.productPage).toBe(1);
       });
     });
   });
