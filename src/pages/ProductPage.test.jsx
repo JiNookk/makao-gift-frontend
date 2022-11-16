@@ -76,7 +76,6 @@ describe('productPage', () => {
         fireEvent.click(screen.getByText('선물하기'));
 
         expect(navigate).toBeCalledWith('/order');
-        // expect(accountStore.amount).toBe(40000);
       });
     });
   });

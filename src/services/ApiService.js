@@ -21,6 +21,10 @@ export default class ApiService {
       pages: data.productPages,
     };
   }
+
+  async createOrder(orderData) {
+    await axios.post(`${baseUrl}/orders`, orderData);
+  }
 }
 
 export const apiService = new ApiService();

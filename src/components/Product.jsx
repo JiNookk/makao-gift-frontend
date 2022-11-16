@@ -1,45 +1,17 @@
 /* eslint-disable react/button-has-type */
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import useAccountStore from '../hooks/useAccountStore';
-import useOrderStore from '../hooks/useOrderStore';
-import useProductsStore from '../hooks/useProductsStore';
+import useProduct from '../hooks/useProduct';
 import numberFormat from '../numberFormat';
 
 export default function Product() {
-  const [isAmountEnough, setIsAmountEnough] = useState(true);
-  const accountStore = useAccountStore();
-  const orderStore = useOrderStore();
-  const productsStore = useProductsStore();
-  const navigate = useNavigate();
-  const { selectedItem } = productsStore;
-
-  // TODO: 언제 다시 reset을 시켜야 할까?
-  useEffect(() => {
-    const { price } = selectedItem;
-    orderStore.reset({ price });
-  }, [selectedItem]);
-
-  const handleIncreaseOrder = () => {
-    orderStore.increaseCount();
-  };
-
-  const handleDecreaseOrder = () => {
-    orderStore.decreaseCount();
-  };
-
-  const handleOrder = () => {
-    if (accountStore.amount < orderStore.totalPrice) {
-      setIsAmountEnough(false);
-      return;
-    }
-
-    accountStore.purchase({ itemCost: orderStore.totalPrice });
-    navigate('/order');
-    setIsAmountEnough(true);
-  };
-
-  console.log(JSON.stringify(orderStore));
+  const {
+    selectedItem,
+    orderCount,
+    totalPrice,
+    isAmountEnough,
+    handleIncreaseOrder,
+    handleDecreaseOrder,
+    handleOrder,
+  } = useProduct();
 
   return (
     <div>
@@ -60,7 +32,7 @@ export default function Product() {
         <p>
           구매수량:
           {' '}
-          {orderStore.orderCount}
+          {orderCount}
         </p>
         <button type="button" onClick={handleDecreaseOrder}>-</button>
       </div>
@@ -72,7 +44,7 @@ export default function Product() {
       <p>
         총 상품금액:
         {' '}
-        {numberFormat(orderStore.totalPrice)}
+        {numberFormat(totalPrice)}
         원
       </p>
       <button type="button" onClick={handleOrder}>선물하기</button>

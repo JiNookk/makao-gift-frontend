@@ -36,6 +36,22 @@ const server = setupServer(
       ],
     }))
   )),
+
+  rest.post(`${baseUrl}/orders`, async (req, res, ctx) => {
+    const { id, orderCount, totalPrice } = await req.json();
+
+    if (id <= 0 || orderCount <= 0 || totalPrice <= 0) {
+      return res(
+        ctx.status(400),
+        ctx.json({
+          code: 1002,
+          message: '금액이 잘못되었습니다.',
+        }),
+      );
+    }
+
+    return res(ctx.status(200));
+  }),
 );
 
 export default server;
