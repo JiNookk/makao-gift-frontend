@@ -37,6 +37,20 @@ const server = setupServer(
     }))
   )),
 
+  rest.get(`${baseUrl}/orders`, (req, res, ctx) => (
+    res(ctx.json({
+      orders: [{
+        id: 1,
+        receiver: '제임스',
+        manufacturer: '메가테라',
+        name: '테스트 아이템',
+      }],
+      orderPages: [
+        { orderPage: 1 },
+      ],
+    }))
+  )),
+
   rest.post(`${baseUrl}/orders`, async (req, res, ctx) => {
     const { id, orderCount, totalPrice } = await req.json();
 

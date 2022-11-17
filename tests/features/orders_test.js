@@ -7,38 +7,42 @@ Before(({ I }) => {
   I.amOnPage('/');
 });
 
-Scenario('with logged out', ({ I }) => {
-  // Given
-  I.logout();
+// Scenario('with logged out', ({ I }) => {
+//   // Given
+//   I.logout();
 
-  // When
-  I.click('주문조회');
+//   // When
+//   I.click('주문조회');
 
-  // Then
-  I.see('USER LOGIN');
-});
+//   // Then
+//   I.see('USER LOGIN');
+// });
 
-Scenario('with logged in and no orders', ({ I }) => {
-  // Given
-  I.setupOrders(0);
-  I.login();
+// Scenario('with logged in and no orders', ({ I }) => {
+//   // Given
+//   // I.setupOrders(0);
+//   // I.login();
 
-  // When
-  I.click('주문조회');
+//   // When
+//   I.click('주문조회');
 
-  // Then
-  I.see('내가 주문한 내역이 없습니다.');
-});
+//   // Then
+//   I.see('내가 주문한 내역이 없습니다.');
+// });
 
 Scenario('with logged in and orders', ({ I }) => {
   // Given
-  I.setupOrders(3);
-  I.login();
+  // I.setupOrders(3);
+  // I.login();
 
   // When
   I.click('주문조회');
 
   // Then
-  I.see('내가 주문한 내역 입니다.');
-  I.seeNumberOfVisibleElements('.item', 3);
+  I.see('내가 주문한 내역입니다.');
+  I.see('메가테라');
+  I.see('테스트 아이템');
+  I.see('To.제임스');
+
+  // I.seeNumberOfVisibleElements('.item', 1);
 });

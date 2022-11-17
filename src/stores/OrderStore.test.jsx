@@ -11,6 +11,14 @@ describe('OrderStore', () => {
     orderStore.reset({ price: 10000 });
   });
 
+  describe('fetchOrders', () => {
+    it('sets Orders', async () => {
+      await orderStore.fetchOrders();
+
+      expect(orderStore.orders.length).toBe(1);
+    });
+  });
+
   describe('reset', () => {
     it('resets order counts and get product price', () => {
       orderStore.reset({ price: 20000 });

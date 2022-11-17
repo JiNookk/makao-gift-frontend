@@ -4,11 +4,29 @@ import Store from './Store';
 export default class OrderStore extends Store {
   constructor() {
     super();
+    this.orders = [];
     this.itemPrice = 0;
     this.orderCount = 0;
     this.totalPrice = 0;
 
     this.createOrderState = '';
+  }
+
+  async fetchOrders() {
+    // this.orders = [{
+    //   id: 1,
+    //   receiver: '제임스',
+    //   item: {
+    //     manufacturer: '메가테라',
+    //     name: '테스트 아이템',
+    //   },
+    // }];
+
+    const { orders } = await apiService.fetchOrders();
+
+    this.orders = orders;
+
+    this.publish();
   }
 
   reset({ price }) {

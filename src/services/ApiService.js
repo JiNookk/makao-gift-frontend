@@ -4,7 +4,6 @@ import baseUrl from '../../config';
 
 export default class ApiService {
   async fetchProduct(id) {
-    // const query = page ? `?page=${page}` : '';
     const { data } = await axios.get(`${baseUrl}/products/${id}`);
 
     return {
@@ -19,6 +18,16 @@ export default class ApiService {
     return {
       products: data.products,
       pages: data.productPages,
+    };
+  }
+
+  async fetchOrders(page) {
+    const query = page ? `?page=${page}` : '';
+    const { data } = await axios.get(`${baseUrl}/orders${query}`);
+
+    return {
+      orders: data.orders,
+      pages: data.orderPages,
     };
   }
 

@@ -28,6 +28,10 @@ beforeEach(() => {
   orderStore.reset({ price: 10000 });
 });
 
+afterEach(() => {
+  jest.clearAllMocks();
+});
+
 describe('OrderPage', () => {
   context('when entered', () => {
     it('renders Default Component', () => {
@@ -42,31 +46,6 @@ describe('OrderPage', () => {
   });
 
   describe('submit purchase form', () => {
-    context('with blank properties', () => {
-      it('display error message', async () => {
-        render(<OrderPage />);
-
-        fireEvent.change(screen.getByLabelText('받는 분 성함'), {
-          target: { value: '' },
-        });
-        fireEvent.change(screen.getByLabelText('받는 분 주소'), {
-          target: { value: '' },
-        });
-        fireEvent.change(screen.getByLabelText('받는 분께 보내는 메세지'), {
-          target: { value: '' },
-        });
-
-        fireEvent.click(screen.getByText('선물하기'));
-
-        await waitFor(() => {
-          screen.getByText('주소를 입력해주세요');
-          screen.getByText('성함을 입력해주세요');
-          expect(navigate).not.toBeCalled();
-          expect(createOrder).not.toBeCalled();
-        });
-      });
-    });
-
     context('with correct properties', () => {
       it('redirects to orders page', async () => {
         render(<OrderPage />);
@@ -92,6 +71,31 @@ describe('OrderPage', () => {
             to: '제임스',
             address: '뉴욕',
             message: '생축',
+          });
+        });
+      });
+
+      context('with blank properties', () => {
+        it('display error message', async () => {
+          render(<OrderPage />);
+
+          fireEvent.change(screen.getByLabelText('받는 분 성함'), {
+            target: { value: '' },
+          });
+          fireEvent.change(screen.getByLabelText('받는 분 주소'), {
+            target: { value: '' },
+          });
+          fireEvent.change(screen.getByLabelText('받는 분께 보내는 메세지'), {
+            target: { value: '' },
+          });
+
+          fireEvent.click(screen.getByText('선물하기'));
+
+          await waitFor(() => {
+            screen.getByText('주소를 입력해주세요');
+            screen.getByText('성함을 입력해주세요');
+            expect(navigate).not.toBeCalled();
+            expect(createOrder).not.toBeCalled();
           });
         });
       });
