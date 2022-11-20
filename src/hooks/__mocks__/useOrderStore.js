@@ -1,6 +1,6 @@
-export default function useOrderStore() {
+export default function useOrdersStore() {
   return {
-    orderStore: {
+    ordersStore: {
       createOrder() {
         //
       },

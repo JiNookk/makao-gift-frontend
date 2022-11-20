@@ -17,15 +17,19 @@ export default function Header() {
           <Link to="/orders">주문조회</Link>
         </li>
       </ul>
-      <div>
-        <p>
+      <ul>
+        <li>
+          <Link to="/signup">회원가입</Link>
+        </li>
+        <li>
           내 잔액:
           {' '}
           {numberFormat(accountStore.amount)}
           원
-        </p>
-        {/* TODO: 로그인 기능 만들 때로그아웃 버튼 구현할 것 */}
-      </div>
+        </li>
+        {/* TODO: 로그인 기능 만들 때 로그아웃 버튼 구현할 것 */}
+      </ul>
+
     </nav>
   );
 }

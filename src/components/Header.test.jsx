@@ -13,4 +13,6 @@ test('Header', () => {
   screen.getByText('스토어');
   screen.getByText('주문조회');
   screen.getByText('내 잔액: 50,000원');
+  screen.getByText('회원가입');
+  // screen.getByText('로그인');
 });

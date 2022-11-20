@@ -21,6 +21,12 @@ export default class ApiService {
     };
   }
 
+  async fetchOrder({ orderId }) {
+    const { data } = await axios.get(`${baseUrl}/orders/${orderId}`);
+
+    return data;
+  }
+
   async fetchOrders(page) {
     const query = page ? `?page=${page}` : '';
     const { data } = await axios.get(`${baseUrl}/orders${query}`);
@@ -33,6 +39,19 @@ export default class ApiService {
 
   async createOrder(orderData) {
     await axios.post(`${baseUrl}/orders`, orderData);
+  }
+
+  async requestSignUp({
+    name, userName, password, confirm,
+  }) {
+    const { data } = await axios.post(`${baseUrl}/users`, {
+      name, userName, password, confirm,
+    });
+
+    return {
+      message: data.message,
+      code: data.code,
+    };
   }
 }
 

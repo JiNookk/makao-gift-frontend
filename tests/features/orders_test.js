@@ -18,22 +18,24 @@ Before(({ I }) => {
 //   I.see('USER LOGIN');
 // });
 
-// Scenario('with logged in and no orders', ({ I }) => {
-//   // Given
-//   // I.setupOrders(0);
-//   // I.login();
+Scenario('with logged in and no orders', ({ I }) => {
+  // Given
+  // I.login();
+  I.setupOrderDB({ orderCounts: 0 });
+  I.amOnPage('/');
 
-//   // When
-//   I.click('주문조회');
+  // When
+  I.click('주문조회');
 
-//   // Then
-//   I.see('내가 주문한 내역이 없습니다.');
-// });
+  // Then
+  I.see('내가 주문한 내역이 없습니다.');
+});
 
 Scenario('with logged in and orders', ({ I }) => {
   // Given
-  // I.setupOrders(3);
   // I.login();
+  I.setupOrderDB({ orderCounts: 3 });
+  I.amOnPage('/');
 
   // When
   I.click('주문조회');
@@ -44,5 +46,5 @@ Scenario('with logged in and orders', ({ I }) => {
   I.see('테스트 아이템');
   I.see('To.제임스');
 
-  // I.seeNumberOfVisibleElements('.item', 1);
+  I.seeNumberOfVisibleElements('.item', 3);
 });

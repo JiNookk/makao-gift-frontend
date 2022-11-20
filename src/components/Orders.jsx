@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import useOrderStore from '../hooks/useOrderStore';
 
 const ItemContainer = styled.div`
   display: grid;
@@ -18,20 +17,32 @@ const ItemImage = styled.img`
   height: 80px;
 `;
 
-export default function Orders() {
-  const orderStore = useOrderStore();
-  const { orders } = orderStore;
-
+export default function Orders({ orders, onClick }) {
   // TODO : 백엔드를 보면 order안에 아이템이 존재한다.
   // orderStore안에 product가 존재하는게 맞나?
+
+  const handleNavigate = (id) => {
+    onClick(id);
+  };
+
   return (
     <div>
-      <p>
-        내가 주문한 내역입니다.
-      </p>
+      {orders.length ? (
+        <p>
+          내가 주문한 내역입니다.
+        </p>
+      ) : (
+        <p>
+          내가 주문한 내역이 없습니다.
+        </p>
+      )}
       <ItemContainer>
         {orders.map((order) => (
-          <Item key={order.id} className="item">
+          <Item
+            key={order.id}
+            className="item"
+            onClick={() => handleNavigate(order.id)}
+          >
             <ItemImage src={order.imagePath} alt="product" />
             <p>
               {order.manufacturer}

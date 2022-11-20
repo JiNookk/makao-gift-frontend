@@ -4,12 +4,12 @@ import { useForm } from 'react-hook-form';
 import useProduct from '../hooks/useProduct';
 import numberFormat from '../numberFormat';
 import useAccountStore from '../hooks/useAccountStore';
-import useOrderStore from '../hooks/useOrderStore';
+import useOrdersStore from '../hooks/useOrdersStore';
 
 export default function OrderPage() {
   const navigate = useNavigate();
 
-  const orderStore = useOrderStore();
+  const ordersStore = useOrdersStore();
   const accountStore = useAccountStore();
   const { selectedItem, orderCount, totalPrice } = useProduct();
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -18,7 +18,7 @@ export default function OrderPage() {
     if (data) {
       const { id } = selectedItem;
 
-      orderStore.createOrder({
+      ordersStore.createOrder({
         id, orderCount, totalPrice, ...data,
       });
 

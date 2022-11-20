@@ -37,6 +37,27 @@ const server = setupServer(
     }))
   )),
 
+  rest.get(`${baseUrl}/orders/:orderId`, (req, res, ctx) => {
+    const { orderId } = req.params;
+    if (!orderId || orderId <= 0) {
+      return res(ctx.status(404));
+    }
+
+    return res(ctx.json({
+      product: {
+        imagePath: '../resources/test.jpg',
+        manufacturer: '메가테라',
+        name: '테스트 아이템',
+      },
+      orderCount: 1,
+      totalPrice: 10000,
+      purchaseDate: '2022-10-01',
+      receiver: '제임스',
+      address: '뉴욕',
+      message: '생축',
+    }));
+  }),
+
   rest.get(`${baseUrl}/orders`, (req, res, ctx) => (
     res(ctx.json({
       orders: [{
@@ -65,6 +86,22 @@ const server = setupServer(
     }
 
     return res(ctx.status(200));
+  }),
+
+  rest.post(`${baseUrl}/users`, async (req, res, ctx) => {
+    const { userName } = await req.json();
+
+    if (userName === 'overlapped123') {
+      return res(
+        ctx.status(400),
+        ctx.json({
+          code: 1003,
+          message: '중복된 이름입니다.',
+        }),
+      );
+    }
+
+    return res(ctx.status(201));
   }),
 );
 

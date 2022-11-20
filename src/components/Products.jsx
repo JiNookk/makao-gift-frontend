@@ -26,7 +26,6 @@ export default function Products() {
   const { products } = productsStore;
 
   const handleClickItem = (id) => {
-    // productsStore.selectItem(id);
     navigate(`/products/${id}`);
   };
 

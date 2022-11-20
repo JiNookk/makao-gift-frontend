@@ -1,18 +1,27 @@
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Orders from '../components/Orders';
-import useOrderStore from '../hooks/useOrderStore';
+import useOrdersStore from '../hooks/useOrdersStore';
 
 export default function OrdersPage() {
-  const orderStore = useOrderStore();
+  const navigate = useNavigate();
+
+  const ordersStore = useOrdersStore();
 
   useEffect(() => {
-    orderStore.fetchOrders();
+    ordersStore.fetchOrders();
   }, []);
 
+  const handleNavigate = (id) => {
+    const to = `/orders/${id}`;
+
+    navigate(to);
+  };
+
   // TODO : 백엔드를 보면 order안에 아이템이 존재한다.
-  // orderStore안에 product가 존재하는게 맞나?
+  // ordersStore안에 product가 존재하는게 맞나?
 
   return (
-    <Orders />
+    <Orders orders={ordersStore.orders} onClick={handleNavigate} />
   );
 }

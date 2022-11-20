@@ -1,7 +1,7 @@
 import {
   fireEvent, render, screen, waitFor,
 } from '@testing-library/react';
-import OrderStore from '../stores/OrderStore';
+import OrdersStore from '../stores/OrdersStore';
 
 import OrderPage from './OrderPage';
 
@@ -19,13 +19,13 @@ jest.mock('../hooks/useProduct');
 
 const createOrder = jest.fn();
 
-jest.mock('../hooks/useOrderStore', () => () => ({
+jest.mock('../hooks/useOrdersStore', () => () => ({
   createOrder,
 }));
 
 beforeEach(() => {
-  const orderStore = new OrderStore();
-  orderStore.reset({ price: 10000 });
+  const ordersStore = new OrdersStore();
+  ordersStore.reset({ price: 10000 });
 });
 
 afterEach(() => {
