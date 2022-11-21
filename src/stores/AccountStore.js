@@ -5,9 +5,34 @@ export default class AccountStore extends Store {
   constructor() {
     super();
 
+    // TODO : 손봐야함.
     this.amount = 50000;
 
     this.signUpState = '';
+  }
+
+  async login({ userName, password }) {
+    try {
+      const {
+        accessToken,
+        name,
+        amount,
+      } = await apiService.login({ userName, password });
+
+      this.name = name;
+      this.amount = amount;
+
+      return accessToken;
+    } catch (e) {
+      this.errorMessage = e.response.data.message;
+
+      // TODO: 고칠것
+      this.amount = 0;
+
+      return '';
+    } finally {
+      this.publish();
+    }
   }
 
   purchase({ itemCost }) {

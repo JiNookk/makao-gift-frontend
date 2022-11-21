@@ -4,6 +4,26 @@ import { setupServer } from 'msw/node';
 import baseUrl from '../config';
 
 const server = setupServer(
+  rest.post(`${baseUrl}/session`, async (req, res, ctx) => {
+    const { userName, password } = await req.json();
+
+    if (userName === 'correct123' && password === 'Password123!') {
+      return res(ctx.json({
+        accessToken: 'ACCESS.TOKEN',
+        amount: 100_000,
+        name: '오징욱',
+      }));
+    }
+
+    return res(
+      ctx.status(400),
+      ctx.json({
+        code: 1004,
+        message: '아이디 혹은 비밀번호가 맞지 않습니다',
+      }),
+    );
+  }),
+
   rest.get(`${baseUrl}/products/:productId`, (req, res, ctx) => {
     const { productId } = req.params;
     if (!productId || productId <= 0) {
@@ -103,6 +123,7 @@ const server = setupServer(
 
     return res(ctx.status(201));
   }),
+
 );
 
 export default server;

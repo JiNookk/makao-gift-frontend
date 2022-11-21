@@ -3,6 +3,19 @@ import axios from 'axios';
 import baseUrl from '../../config';
 
 export default class ApiService {
+  async login({ userName, password }) {
+    const { data } = await axios.post(`${baseUrl}/session`, {
+      userName,
+      password,
+    });
+
+    return {
+      accessToken: data.accessToken,
+      amount: data.amount,
+      name: data.name,
+    };
+  }
+
   async fetchProduct(id) {
     const { data } = await axios.get(`${baseUrl}/products/${id}`);
 

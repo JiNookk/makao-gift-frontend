@@ -40,7 +40,7 @@ Scenario('login with correct id and password', ({ I }) => {
 //   I.click('로그인하기');
 
 //   // Then
-//   I.see('아이디 혹은 비밀번호가 일치하지 않는다');
+//   I.see('아이디를 입력해주세요');
 // });
 
 // Scenario('login with blank password ', ({ I }) => {
@@ -51,5 +51,5 @@ Scenario('login with correct id and password', ({ I }) => {
 //   I.click('로그인하기');
 
 //   // Then
-//   I.see('아이디 혹은 비밀번호가 일치하지 않는다');
+//   I.see('비밀번호를 입력해주세요');
 // });
