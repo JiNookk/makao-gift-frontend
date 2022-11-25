@@ -1,14 +1,18 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
+import defaultTheme from '../styles/defaultTheme';
 
 import SignUpPage from './SignUpPage';
 
 describe('SignUpPage', () => {
   it('renders Default Component', () => {
     render((
-      <MemoryRouter>
-        <SignUpPage />
-      </MemoryRouter>
+      <ThemeProvider theme={defaultTheme}>
+        <MemoryRouter>
+          <SignUpPage />
+        </MemoryRouter>
+      </ThemeProvider>
     ));
 
     screen.getByLabelText('이름 :');

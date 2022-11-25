@@ -17,7 +17,6 @@ test('ProductsPage', async () => {
     screen.getByAltText('test');
     screen.getByText('메가테라');
     screen.getByText('테스트 아이템');
-    screen.getByText('테스트용 아이템입니다.');
     screen.getByText('10,000원');
   });
 });

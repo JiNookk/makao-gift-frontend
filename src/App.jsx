@@ -1,5 +1,12 @@
-import { Reset } from 'styled-reset';
 import { Route, Routes } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useLocalStorage } from 'usehooks-ts';
+
+import { Reset } from 'styled-reset';
+import { ThemeProvider } from 'styled-components';
+import defaultTheme from './styles/defaultTheme';
+import GlobalStyle from './styles/GlobalStyle';
+
 import Header from './components/Header';
 import HomePage from './pages/HomePage';
 import OrdersPage from './pages/OrdersPage';
@@ -10,11 +17,22 @@ import OrderDetailPage from './pages/OrderDetailPage';
 import SignUpPage from './pages/SignUpPage';
 import LoginPage from './pages/LoginPage';
 
+import { apiService } from './services/ApiService';
+
 export default function App() {
+  const [accessToken, setAccessToken] = useLocalStorage('accessToken', '');
+
+  useEffect(() => {
+    apiService.setAccessToken(accessToken);
+  }, [accessToken]);
+
+  // useEffect(() => () => setAccessToken(''), []);
+
   return (
-    <div>
+    <ThemeProvider theme={defaultTheme}>
       <Reset />
-      <Header />
+      <GlobalStyle />
+      <Header accessToken={accessToken} setAccessToken={setAccessToken} />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/products" element={<ProductsPage />} />
@@ -26,6 +44,6 @@ export default function App() {
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/login" element={<LoginPage />} />
       </Routes>
-    </div>
+    </ThemeProvider>
   );
 }

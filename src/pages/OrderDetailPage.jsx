@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 import OrderDetail from '../components/OrderDetail';
+import Container from '../components/ui/Container';
+import Panel from '../components/ui/Panel';
 import useOrderStore from '../hooks/useOrderStore';
 
 export default function OrderDetailPage() {
@@ -11,6 +13,14 @@ export default function OrderDetailPage() {
   }, []);
 
   return (
-    <OrderDetail order={orderStore.order} item={orderStore.order.product} />
+    <div>
+      <Panel />
+      <Container>
+        <OrderDetail
+          order={orderStore.order}
+          item={orderStore.order.product}
+        />
+      </Container>
+    </div>
   );
 }

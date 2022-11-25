@@ -12,10 +12,6 @@ export default class OrdersStore extends Store {
     this.createOrderState = '';
   }
 
-  fetchOrder({ orderId }) {
-    this.publish();
-  }
-
   async fetchOrders() {
     const { orders } = await apiService.fetchOrders();
 
@@ -38,9 +34,9 @@ export default class OrdersStore extends Store {
   }
 
   decreaseCount() {
-    if (this.orderCount <= 1) {
-      return;
-    }
+    // if (this.orderCount <= 1) {
+    //   return;
+    // }
 
     this.orderCount -= 1;
     this.updateTotalPrice();
@@ -84,6 +80,10 @@ export default class OrdersStore extends Store {
 
   get isCreateOrderFail() {
     return this.createOrderState === 'fail';
+  }
+
+  get isLessThanTwo() {
+    return this.orderCount <= 1;
   }
 }
 

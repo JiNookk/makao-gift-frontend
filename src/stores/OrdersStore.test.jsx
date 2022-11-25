@@ -19,6 +19,7 @@ describe('OrdersStore', () => {
     });
   });
 
+  // 없애야 됨.
   describe('reset', () => {
     it('resets order counts and get product price', () => {
       ordersStore.reset({ price: 20000 });
@@ -46,17 +47,6 @@ describe('OrdersStore', () => {
         ordersStore.increaseCount();
         expect(ordersStore.orderCount).toBe(2);
         expect(ordersStore.totalPrice).toBe(20000);
-
-        ordersStore.decreaseCount();
-        expect(ordersStore.orderCount).toBe(1);
-        expect(ordersStore.totalPrice).toBe(10000);
-      });
-    });
-
-    context('when order count is less then 2', () => {
-      it('decrease order count', () => {
-        expect(ordersStore.orderCount).toBe(1);
-        expect(ordersStore.totalPrice).toBe(10000);
 
         ordersStore.decreaseCount();
         expect(ordersStore.orderCount).toBe(1);

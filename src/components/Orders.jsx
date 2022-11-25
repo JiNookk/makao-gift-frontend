@@ -1,26 +1,11 @@
-import styled from 'styled-components';
-
-const ItemContainer = styled.div`
-  display: grid;
-  grid: repeat(2, 200px)/ repeat(4, 150px);
-  gap: 60px 20px;
-`;
-
-const Item = styled.article`
-  border: 1px solid #000;
-
-`;
-
-const ItemImage = styled.img`
-  display: block;
-  width: 80px;
-  height: 80px;
-`;
+import Item from './ui/Item';
+import ItemContainer from './ui/ItemContainer';
+import ItemImage from './ui/ItemImage';
+import Manufacturer from './ui/Manufacturer';
+import Price from './ui/Price';
+import Title from './ui/Title';
 
 export default function Orders({ orders, onClick }) {
-  // TODO : 백엔드를 보면 order안에 아이템이 존재한다.
-  // orderStore안에 product가 존재하는게 맞나?
-
   const handleNavigate = (id) => {
     onClick(id);
   };
@@ -28,13 +13,13 @@ export default function Orders({ orders, onClick }) {
   return (
     <div>
       {orders.length ? (
-        <p>
+        <Title>
           내가 주문한 내역입니다.
-        </p>
+        </Title>
       ) : (
-        <p>
+        <Title>
           내가 주문한 내역이 없습니다.
-        </p>
+        </Title>
       )}
       <ItemContainer>
         {orders.map((order) => (
@@ -44,16 +29,16 @@ export default function Orders({ orders, onClick }) {
             onClick={() => handleNavigate(order.id)}
           >
             <ItemImage src={order.imagePath} alt="product" />
-            <p>
+            <Manufacturer>
               {order.manufacturer}
-            </p>
+            </Manufacturer>
             <p>
               {order.name}
             </p>
-            <p>
+            <Price>
               To.
               {order.receiver}
-            </p>
+            </Price>
           </Item>
         ))}
       </ItemContainer>

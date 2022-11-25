@@ -3,6 +3,14 @@ import axios from 'axios';
 import baseUrl from '../../config';
 
 export default class ApiService {
+  constructor() {
+    this.accessToken = '';
+  }
+
+  setAccessToken(accessToken) {
+    this.accessToken = accessToken;
+  }
+
   async login({ userName, password }) {
     const { data } = await axios.post(`${baseUrl}/session`, {
       userName,
@@ -35,14 +43,18 @@ export default class ApiService {
   }
 
   async fetchOrder({ orderId }) {
-    const { data } = await axios.get(`${baseUrl}/orders/${orderId}`);
+    const { data } = await axios.get(`${baseUrl}/orders/${orderId}`, {
+      headers: { Authorization: `Bearer ${this.accessToken}` },
+    });
 
     return data;
   }
 
   async fetchOrders(page) {
     const query = page ? `?page=${page}` : '';
-    const { data } = await axios.get(`${baseUrl}/orders${query}`);
+    const { data } = await axios.get(`${baseUrl}/orders${query}`, {
+      headers: { Authorization: `Bearer ${this.accessToken}` },
+    });
 
     return {
       orders: data.orders,
@@ -51,7 +63,9 @@ export default class ApiService {
   }
 
   async createOrder(orderData) {
-    await axios.post(`${baseUrl}/orders`, orderData);
+    await axios.post(`${baseUrl}/orders`, orderData, {
+      headers: { Authorization: `Bearer ${this.accessToken}` },
+    });
   }
 
   async requestSignUp({

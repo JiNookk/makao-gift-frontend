@@ -1,4 +1,6 @@
 import { render, screen } from '@testing-library/react';
+import { ThemeProvider } from 'styled-components';
+import defaultTheme from '../styles/defaultTheme';
 
 import OrderDetail from './OrderDetail';
 
@@ -21,16 +23,20 @@ const order = {
 
 describe('OrderDetail', () => {
   it('renders Default Component', () => {
-    render(<OrderDetail order={order} item={item} />);
+    render(
+      <ThemeProvider theme={defaultTheme}>
+        <OrderDetail order={order} item={item} />
+      </ThemeProvider>,
+    );
 
-    screen.getByAltText('test');
-    screen.getByText('메가테라');
-    screen.getByText('테스트 아이템');
-    screen.getByText('구매수량: 1');
-    screen.getByText('총 상품 금액: 10,000원');
-    screen.getByText('구매일: 2022-10-01');
-    screen.getByText('받는 분: 제임스');
-    screen.getByText('받는 분 주소: 뉴욕');
-    screen.getByText('받는 분께 보내는 메시지: 생축');
+    screen.getByAltText(/test/);
+    screen.getByText(/메가테라/);
+    screen.getByText(/테스트 아이템/);
+    screen.getAllByText(/1/);
+    screen.getByText(/10,000원/);
+    screen.getByText(/2022-10-01/);
+    screen.getByText(/제임스/);
+    screen.getByText(/뉴욕/);
+    screen.getByText(/생축/);
   });
 });

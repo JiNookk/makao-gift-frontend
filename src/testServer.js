@@ -26,9 +26,11 @@ const server = setupServer(
 
   rest.get(`${baseUrl}/products/:productId`, (req, res, ctx) => {
     const { productId } = req.params;
+
     if (!productId || productId <= 0) {
       return res(ctx.status(404));
     }
+
     return res(ctx.json({
       id: 1,
       manufacturer: '메가테라',

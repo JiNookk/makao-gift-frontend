@@ -1,27 +1,20 @@
-Feature('Order');
+Feature('Orders');
 
-Before(({ I }) => {
-  // TODO: 아이템 30개 세팅, 아이템, 계정 설정
-  // I.setupItemDB(30);
-  // I.setupItem(2, 10000)
+Scenario('with logged out', ({ I }) => {
+  // Given
   I.amOnPage('/');
+
+  // When
+  I.click('주문조회');
+
+  // Then
+  I.see('USER LOGIN');
 });
-
-// Scenario('with logged out', ({ I }) => {
-//   // Given
-//   I.logout();
-
-//   // When
-//   I.click('주문조회');
-
-//   // Then
-//   I.see('USER LOGIN');
-// });
 
 Scenario('with logged in and no orders', ({ I }) => {
   // Given
-  // I.login();
   I.setupOrderDB({ orderCounts: 0 });
+  I.login({ id: 'test123', password: 'Password123!' });
   I.amOnPage('/');
 
   // When
@@ -33,8 +26,8 @@ Scenario('with logged in and no orders', ({ I }) => {
 
 Scenario('with logged in and orders', ({ I }) => {
   // Given
-  // I.login();
   I.setupOrderDB({ orderCounts: 3 });
+  I.login({ id: 'test123', password: 'Password123!' });
   I.amOnPage('/');
 
   // When

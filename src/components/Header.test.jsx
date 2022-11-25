@@ -13,10 +13,12 @@ jest.mock('usehooks-ts', () => ({
   },
 }));
 
-test('HeaderWithOutToken', () => {
+test('HeaderWithToken', () => {
+  const accessToken = 'ACCESS.TOKEN';
+
   render(
     <MemoryRouter>
-      <Header />
+      <Header accessToken={accessToken} />
     </MemoryRouter>,
   );
 
@@ -25,4 +27,20 @@ test('HeaderWithOutToken', () => {
   screen.getByText('주문조회');
   screen.getByText('로그아웃');
   screen.getByText('내 잔액: 50,000원');
+});
+
+test('HeaderWithOutToken', () => {
+  const accessToken = '';
+
+  render(
+    <MemoryRouter>
+      <Header accessToken={accessToken} />
+    </MemoryRouter>,
+  );
+
+  screen.getByText('홈');
+  screen.getByText('스토어');
+  screen.getByText('주문조회');
+  screen.getByText('로그인');
+  screen.getByText('회원가입');
 });

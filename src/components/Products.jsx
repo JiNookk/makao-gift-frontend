@@ -1,24 +1,11 @@
-import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import useProductsStore from '../hooks/useProductsStore';
 import numberFormat from '../numberFormat';
-
-const ItemContainer = styled.div`
-  display: grid;
-  grid: repeat(2, 200px)/ repeat(4, 150px);
-  gap: 60px 20px;
-`;
-
-const Item = styled.article`
-  border: 1px solid #000;
-
-`;
-
-const ItemImage = styled.img`
-  display: block;
-  width: 80px;
-  height: 80px;
-`;
+import ItemContainer from './ui/ItemContainer';
+import Item from './ui/Item';
+import ItemImage from './ui/ItemImage';
+import Manufacturer from './ui/Manufacturer';
+import Price from './ui/Price';
 
 export default function Products() {
   const navigate = useNavigate();
@@ -38,13 +25,12 @@ export default function Products() {
           onClick={() => handleClickItem(product.id)}
         >
           <ItemImage alt="test" src={product.imagePath} />
-          <p>{product.manufacturer}</p>
+          <Manufacturer>{product.manufacturer}</Manufacturer>
           <p>{product.name}</p>
-          <p>{product.description}</p>
-          <p>
+          <Price>
             {numberFormat(product.price)}
             원
-          </p>
+          </Price>
         </Item>
       ))}
     </ItemContainer>

@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useLocalStorage } from 'usehooks-ts';
 import useAccountStore from './useAccountStore';
 import useOrdersStore from './useOrdersStore';
 import useProductsStore from './useProductsStore';
 
 export default function useProduct() {
+  const [accessToken] = useLocalStorage('accessToken');
   const navigate = useNavigate();
   const [isAmountEnough, setIsAmountEnough] = useState(true);
   const accountStore = useAccountStore();
@@ -27,12 +29,16 @@ export default function useProduct() {
   };
 
   const handleOrder = () => {
+    if (!accessToken) {
+      navigate('/login');
+      return;
+    }
+
     if (accountStore.amount < ordersStore.totalPrice) {
       setIsAmountEnough(false);
       return;
     }
 
-    // accountStore.purchase({ itemCost: ordersStore.totalPrice });
     navigate('/order');
     setIsAmountEnough(true);
   };
@@ -42,6 +48,7 @@ export default function useProduct() {
     orderCount: ordersStore.orderCount,
     totalPrice: ordersStore.totalPrice,
     isAmountEnough,
+    isLessThanTwo: ordersStore.isLessThanTwo,
     handleIncreaseOrder,
     handleDecreaseOrder,
     handleOrder,

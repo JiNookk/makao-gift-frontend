@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Orders from '../components/Orders';
+import Container from '../components/ui/Container';
 import useOrdersStore from '../hooks/useOrdersStore';
 
 export default function OrdersPage() {
@@ -22,6 +23,8 @@ export default function OrdersPage() {
   // ordersStore안에 product가 존재하는게 맞나?
 
   return (
-    <Orders orders={ordersStore.orders} onClick={handleNavigate} />
+    <Container>
+      <Orders orders={ordersStore.orders} onClick={handleNavigate} />
+    </Container>
   );
 }

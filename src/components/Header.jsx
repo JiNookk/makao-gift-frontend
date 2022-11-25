@@ -1,10 +1,36 @@
 import { Link } from 'react-router-dom';
-import { useLocalStorage } from 'usehooks-ts';
+import styled from 'styled-components';
 import useAccountStore from '../hooks/useAccountStore';
 import numberFormat from '../numberFormat';
 
-export default function Header() {
-  const [accessToken, setAccessToken] = useLocalStorage('accessToken', '');
+const Navigation = styled.nav`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-bottom: 1px solid black;
+  padding: 0 320px;
+
+  height: 64px;
+
+  ul{
+    display: flex;
+  }
+`;
+
+const Title = styled.h2`
+  font-size: 1.5rem;
+  font-weight: bold;
+`;
+
+const A = styled(Link)`
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+  margin-inline-start: 2rem;
+`;
+
+export default function Header({ accessToken, setAccessToken }) {
   const accountStore = useAccountStore();
 
   const handleLogout = () => {
@@ -12,40 +38,41 @@ export default function Header() {
   };
 
   return (
-    <nav>
+    <Navigation>
       <ul>
+        <Title>선물하기</Title>
         <li>
-          <Link to="/">홈</Link>
+          <A to="/">홈</A>
         </li>
         <li>
-          <Link to="/products">스토어</Link>
+          <A to="/products">스토어</A>
         </li>
         <li>
-          <Link to="/orders">주문조회</Link>
+          <A to={accessToken ? '/orders' : '/login'}>주문조회</A>
         </li>
       </ul>
       {accessToken ? (
         <ul>
-          <li>
-            <Link to="/" onClick={handleLogout}>로그아웃</Link>
-          </li>
           <li>
             내 잔액:
             {' '}
             {numberFormat(accountStore.amount)}
             원
           </li>
+          <li>
+            <A to="/" onClick={handleLogout}>로그아웃</A>
+          </li>
         </ul>
       ) : (
         <ul>
           <li>
-            <Link to="/signup">회원가입</Link>
+            <A to="/signup">회원가입</A>
           </li>
           <li>
-            <Link to="/login">로그인</Link>
+            <A to="/login">로그인</A>
           </li>
         </ul>
       )}
-    </nav>
+    </Navigation>
   );
 }

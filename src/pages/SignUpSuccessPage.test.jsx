@@ -1,6 +1,8 @@
 import {
   fireEvent, render, screen, waitFor,
 } from '@testing-library/react';
+import { ThemeProvider } from 'styled-components';
+import defaultTheme from '../styles/defaultTheme';
 
 import SignUpSuccessPage from './SignUpSuccessPage';
 
@@ -8,9 +10,11 @@ describe('SignUpSuccessPage', () => {
   const handleClick = jest.fn();
 
   it('renders Default Component', async () => {
-    render(<SignUpSuccessPage
-      onClick={handleClick}
-    />);
+    render(
+      <ThemeProvider theme={defaultTheme}>
+        <SignUpSuccessPage onClick={handleClick} />
+      </ThemeProvider>,
+    );
 
     screen.getByText('회원가입 완료');
     screen.getByText('마카오 선물하기 회원가입이 완료되었습니다.');

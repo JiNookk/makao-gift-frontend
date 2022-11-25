@@ -1,7 +1,9 @@
 import {
   fireEvent, render, screen, waitFor,
 } from '@testing-library/react';
+import { ThemeProvider } from 'styled-components';
 import OrdersStore from '../stores/OrdersStore';
+import defaultTheme from '../styles/defaultTheme';
 
 import OrderPage from './OrderPage';
 
@@ -26,6 +28,12 @@ jest.mock('../hooks/useOrdersStore', () => () => ({
 beforeEach(() => {
   const ordersStore = new OrdersStore();
   ordersStore.reset({ price: 10000 });
+
+  render(
+    <ThemeProvider theme={defaultTheme}>
+      <OrderPage />
+    </ThemeProvider>,
+  );
 });
 
 afterEach(() => {
@@ -35,11 +43,9 @@ afterEach(() => {
 describe('OrderPage', () => {
   context('when entered', () => {
     it('renders Default Component', () => {
-      render(<OrderPage />);
-
       screen.getByText('총 상품금액: 10,000원');
-      screen.getByLabelText('받는 분 성함');
-      screen.getByLabelText('받는 분 주소');
+      screen.getByLabelText('받는 분 성함*');
+      screen.getByLabelText('받는 분 주소*');
       screen.getByLabelText('받는 분께 보내는 메세지');
       screen.getByText('선물하기');
     });
@@ -48,12 +54,10 @@ describe('OrderPage', () => {
   describe('submit purchase form', () => {
     context('with correct properties', () => {
       it('redirects to orders page', async () => {
-        render(<OrderPage />);
-
-        fireEvent.change(screen.getByLabelText('받는 분 성함'), {
+        fireEvent.change(screen.getByLabelText('받는 분 성함*'), {
           target: { value: '제임스' },
         });
-        fireEvent.change(screen.getByLabelText('받는 분 주소'), {
+        fireEvent.change(screen.getByLabelText('받는 분 주소*'), {
           target: { value: '뉴욕' },
         });
         fireEvent.change(screen.getByLabelText('받는 분께 보내는 메세지'), {
@@ -77,12 +81,10 @@ describe('OrderPage', () => {
 
       context('with blank properties', () => {
         it('display error message', async () => {
-          render(<OrderPage />);
-
-          fireEvent.change(screen.getByLabelText('받는 분 성함'), {
+          fireEvent.change(screen.getByLabelText('받는 분 성함*'), {
             target: { value: '' },
           });
-          fireEvent.change(screen.getByLabelText('받는 분 주소'), {
+          fireEvent.change(screen.getByLabelText('받는 분 주소*'), {
             target: { value: '' },
           });
           fireEvent.change(screen.getByLabelText('받는 분께 보내는 메세지'), {

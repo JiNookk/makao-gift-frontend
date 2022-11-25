@@ -2,15 +2,19 @@ import {
   render, screen,
 } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
+import defaultTheme from '../styles/defaultTheme';
 
 import LoginPage from './LoginPage';
 
 describe('LoginPage', () => {
   it('renders Default Component', () => {
     render((
-      <MemoryRouter>
-        <LoginPage />
-      </MemoryRouter>
+      <ThemeProvider theme={defaultTheme}>
+        <MemoryRouter>
+          <LoginPage />
+        </MemoryRouter>
+      </ThemeProvider>
     ));
 
     screen.queryByPlaceholderText('아이디');

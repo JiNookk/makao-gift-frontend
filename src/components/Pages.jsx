@@ -1,5 +1,18 @@
 /* eslint-disable react/button-has-type */
+import styled from 'styled-components';
 import useProductsStore from '../hooks/useProductsStore';
+
+const List = styled.ul`
+  margin-block: 5rem;
+`;
+
+const Page = styled.button`
+  margin-inline-end: 1rem;
+
+  border:none;
+
+  background: none;
+`;
 
 export default function Pages() {
   const productsStore = useProductsStore();
@@ -11,17 +24,17 @@ export default function Pages() {
   };
 
   return (
-    <ul>
+    <List>
       {pages.length > 1
         ? pages.map((page) => (
-          <button
+          <Page
             className="page"
             key={page.productPage}
             onClick={() => handlePage(page.productPage)}
           >
             {page.productPage}
-          </button>
+          </Page>
         )) : null}
-    </ul>
+    </List>
   );
 }

@@ -1,6 +1,8 @@
 import {
   fireEvent, render, screen, waitFor,
 } from '@testing-library/react';
+import { ThemeProvider } from 'styled-components';
+import defaultTheme from '../styles/defaultTheme';
 
 import SignUpForm from './SignUpForm';
 
@@ -9,14 +11,20 @@ const context = describe;
 describe('SignUpForm', () => {
   const handleSignUp = jest.fn();
 
+  beforeEach(() => {
+    render(
+      <ThemeProvider theme={defaultTheme}>
+        <SignUpForm onSubmit={handleSignUp} />
+      </ThemeProvider>,
+    );
+  });
+
   afterEach(() => {
     jest.clearAllMocks();
   });
 
   context('when submit valid properties', () => {
     it('redirects to login page', async () => {
-      render(<SignUpForm onSubmit={handleSignUp} />);
-
       fireEvent.change(screen.getByLabelText('이름 :'), {
         target: { value: '김토끼' },
       });
@@ -41,8 +49,6 @@ describe('SignUpForm', () => {
 
   context('when submit invalid properties', () => {
     it('display error message', async () => {
-      render(<SignUpForm onSubmit={handleSignUp} />);
-
       fireEvent.change(screen.getByLabelText('이름 :'), {
         target: { value: '정신차려이각박한세상속에서' },
       });
@@ -72,8 +78,6 @@ describe('SignUpForm', () => {
 
   context('when submit duplicated username', () => {
     it('display error message', async () => {
-      render(<SignUpForm onSubmit={handleSignUp} />);
-
       fireEvent.change(screen.getByLabelText('이름 :'), {
         target: { value: '중복이얌' },
       });
