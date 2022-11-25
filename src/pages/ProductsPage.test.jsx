@@ -1,5 +1,13 @@
 import { render, screen, waitFor } from '@testing-library/react';
-import ProductsPage from './ProductsPage';
+import ProductsPage from './ProductsPage.jsx';
+
+const navigate = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+  useNavigate() {
+    return navigate;
+  },
+}));
 
 test('ProductsPage', async () => {
   render(<ProductsPage />);
@@ -9,7 +17,6 @@ test('ProductsPage', async () => {
     screen.getByAltText('test');
     screen.getByText('메가테라');
     screen.getByText('테스트 아이템');
-    screen.getByText('테스트용 아이템입니다.');
     screen.getByText('10,000원');
   });
 });

@@ -1,6 +1,12 @@
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import App from './App';
+import App from './App.jsx';
+import { apiService } from './services/ApiService.js';
+
+const data = localStorage.getItem('accessToken');
+const accessToken = JSON.parse(data);
+
+apiService.setAccessToken(accessToken);
 
 const container = document.getElementById('app');
 const root = ReactDOM.createRoot(container);

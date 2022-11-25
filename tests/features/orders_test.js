@@ -1,15 +1,8 @@
-Feature('Order');
-
-Before(({ I }) => {
-  // TODO: 아이템 30개 세팅, 아이템, 계정 설정
-  // I.setupItemDB(30);
-  // I.setupItem(2, 10000)
-  I.amOnPage('/');
-});
+Feature('Orders');
 
 Scenario('with logged out', ({ I }) => {
   // Given
-  I.logout();
+  I.amOnPage('/');
 
   // When
   I.click('주문조회');
@@ -20,8 +13,9 @@ Scenario('with logged out', ({ I }) => {
 
 Scenario('with logged in and no orders', ({ I }) => {
   // Given
-  I.setupOrders(0);
-  I.login();
+  I.setupOrderDB({ orderCounts: 0 });
+  I.login({ id: 'test123', password: 'Password123!' });
+  I.amOnPage('/');
 
   // When
   I.click('주문조회');
@@ -32,13 +26,18 @@ Scenario('with logged in and no orders', ({ I }) => {
 
 Scenario('with logged in and orders', ({ I }) => {
   // Given
-  I.setupOrders(3);
-  I.login();
+  I.setupOrderDB({ orderCounts: 3 });
+  I.login({ id: 'test123', password: 'Password123!' });
+  I.amOnPage('/');
 
   // When
   I.click('주문조회');
 
   // Then
-  I.see('내가 주문한 내역 입니다.');
+  I.see('내가 주문한 내역입니다.');
+  I.see('메가테라');
+  I.see('테스트 아이템');
+  I.see('To.제임스');
+
   I.seeNumberOfVisibleElements('.item', 3);
 });
