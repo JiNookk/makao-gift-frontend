@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import useAccountStore from '../hooks/useAccountStore';
-import numberFormat from '../numberFormat';
+import useAccountStore from '../hooks/useAccountStore.js';
+import numberFormat from '../numberFormat.js';
 
 const Navigation = styled.nav`
   display: flex;

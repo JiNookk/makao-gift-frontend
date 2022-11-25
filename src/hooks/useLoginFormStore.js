@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import { loginFormStore } from '../stores/LoginFormStore';
-import useForceUpdate from './useForceUpdate';
+import { loginFormStore } from '../stores/LoginFormStore.js';
+import useForceUpdate from './useForceUpdate.js';
 
 export default function useLoginFormStore() {
   const forceUpdate = useForceUpdate();

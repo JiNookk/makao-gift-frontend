@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
-import useAccountStore from '../hooks/useAccountStore';
-import PrimaryButton from './ui/PrimaryButton';
+import useAccountStore from '../hooks/useAccountStore.js';
+import PrimaryButton from './ui/PrimaryButton.jsx';
 
 const InputContainer = styled.div`
   margin-block: 1.5rem;

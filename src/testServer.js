@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
-import baseUrl from '../config';
+import baseUrl from '../config.js';
 
 const server = setupServer(
   rest.post(`${baseUrl}/session`, async (req, res, ctx) => {

@@ -2,10 +2,10 @@ import {
   fireEvent, render, screen, waitFor,
 } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
-import OrdersStore from '../stores/OrdersStore';
-import defaultTheme from '../styles/defaultTheme';
+import OrdersStore from '../stores/OrdersStore.js';
+import defaultTheme from '../styles/defaultTheme.js';
 
-import OrderPage from './OrderPage';
+import OrderPage from './OrderPage.jsx';
 
 const context = describe;
 
@@ -17,11 +17,11 @@ jest.mock('react-router-dom', () => ({
   },
 }));
 
-jest.mock('../hooks/useProduct');
+jest.mock('../hooks/useProduct.js');
 
 const createOrder = jest.fn();
 
-jest.mock('../hooks/useOrdersStore', () => () => ({
+jest.mock('../hooks/useOrdersStore.js', () => () => ({
   createOrder,
 }));
 

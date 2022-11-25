@@ -1,6 +1,6 @@
 /* eslint-disable class-methods-use-this */
 import axios from 'axios';
-import baseUrl from '../../config';
+import baseUrl from '../../config.js';
 
 export default class ApiService {
   constructor() {

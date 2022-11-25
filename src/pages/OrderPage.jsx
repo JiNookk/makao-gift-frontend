@@ -1,12 +1,12 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import useProduct from '../hooks/useProduct';
-import numberFormat from '../numberFormat';
-import useAccountStore from '../hooks/useAccountStore';
-import useOrdersStore from '../hooks/useOrdersStore';
-import Container from '../components/ui/Container';
-import OrderForm from './OrderForm';
+import useProduct from '../hooks/useProduct.js';
+import numberFormat from '../numberFormat.js';
+import useAccountStore from '../hooks/useAccountStore.js';
+import useOrdersStore from '../hooks/useOrdersStore.js';
+import Container from '../components/ui/Container.jsx';
+import OrderForm from './OrderForm.jsx';
 
 const OrderContainer = styled.article`
   border: 1px solid #D9D9D9;

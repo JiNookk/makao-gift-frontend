@@ -1,5 +1,5 @@
 import { render, screen, waitFor } from '@testing-library/react';
-import ProductsPage from './ProductsPage';
+import ProductsPage from './ProductsPage.jsx';
 
 const navigate = jest.fn();
 

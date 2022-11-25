@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import App from './App';
-import { apiService } from './services/ApiService';
+import App from './App.jsx';
+import { apiService } from './services/ApiService.js';
 
 const data = localStorage.getItem('accessToken');
 const accessToken = JSON.parse(data);

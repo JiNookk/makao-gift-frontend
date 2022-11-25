@@ -1,6 +1,6 @@
 /* eslint-disable react/button-has-type */
 import styled from 'styled-components';
-import useProductsStore from '../hooks/useProductsStore';
+import useProductsStore from '../hooks/useProductsStore.js';
 
 const List = styled.ul`
   margin-block: 5rem;

@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router-dom';
-import useProductsStore from '../hooks/useProductsStore';
-import numberFormat from '../numberFormat';
-import ItemContainer from './ui/ItemContainer';
-import Item from './ui/Item';
-import ItemImage from './ui/ItemImage';
-import Manufacturer from './ui/Manufacturer';
-import Price from './ui/Price';
+import useProductsStore from '../hooks/useProductsStore.js';
+import numberFormat from '../numberFormat.js';
+import ItemContainer from './ui/ItemContainer.jsx';
+import Item from './ui/Item.jsx';
+import ItemImage from './ui/ItemImage.jsx';
+import Manufacturer from './ui/Manufacturer.jsx';
+import Price from './ui/Price.jsx';
 
 export default function Products() {
   const navigate = useNavigate();

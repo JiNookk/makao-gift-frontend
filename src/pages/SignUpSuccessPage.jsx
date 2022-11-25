@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import styled from 'styled-components';
-import PrimaryButton from '../components/ui/PrimaryButton';
+import PrimaryButton from '../components/ui/PrimaryButton.jsx';
 
 const Container = styled.div`
   text-align: center;

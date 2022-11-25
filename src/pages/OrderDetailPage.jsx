@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-import OrderDetail from '../components/OrderDetail';
-import Container from '../components/ui/Container';
-import Panel from '../components/ui/Panel';
-import useOrderStore from '../hooks/useOrderStore';
+import OrderDetail from '../components/OrderDetail.jsx';
+import Container from '../components/ui/Container.jsx';
+import Panel from '../components/ui/Panel.jsx';
+import useOrderStore from '../hooks/useOrderStore.js';
 
 export default function OrderDetailPage() {
   const orderStore = useOrderStore();

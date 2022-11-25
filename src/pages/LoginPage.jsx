@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLocalStorage } from 'usehooks-ts';
 import styled from 'styled-components';
-import usePageStore from '../hooks/usePageStore';
-import LoginForm from './LoginForm';
-import Container from '../components/ui/Container';
+import usePageStore from '../hooks/usePageStore.js';
+import LoginForm from './LoginForm.jsx';
+import Container from '../components/ui/Container.jsx';
 
 const Title = styled.h1`
   font-size: 2.5rem;

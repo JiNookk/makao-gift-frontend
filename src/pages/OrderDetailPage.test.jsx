@@ -2,9 +2,9 @@ import {
   render, screen, waitFor,
 } from '@testing-library/react';
 
-import OrderDetailPage from './OrderDetailPage';
+import OrderDetailPage from './OrderDetailPage.jsx';
 
-jest.mock('../dateFormat', () => () => '2022-10-01');
+jest.mock('../dateFormat.js', () => () => '2022-10-01');
 
 describe('OrderDetailPage', () => {
   beforeEach(async () => {

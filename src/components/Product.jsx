@@ -1,11 +1,11 @@
 /* eslint-disable react/button-has-type */
 import styled from 'styled-components';
-import useProduct from '../hooks/useProduct';
-import numberFormat from '../numberFormat';
+import useProduct from '../hooks/useProduct.js';
+import numberFormat from '../numberFormat.js';
 
-import Container from './ui/Container';
-import PrimaryButton from './ui/PrimaryButton';
-import Title from './ui/Title';
+import Container from './ui/Container.jsx';
+import PrimaryButton from './ui/PrimaryButton.jsx';
+import Title from './ui/Title.jsx';
 
 const ProductContainer = styled(Container)`
   flex-direction: row;

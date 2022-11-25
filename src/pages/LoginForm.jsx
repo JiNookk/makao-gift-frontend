@@ -2,11 +2,11 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { useEffect } from 'react';
 import styled from 'styled-components';
-import Input from '../components/ui/Input';
-import PrimaryButton from '../components/ui/PrimaryButton';
-import SecondaryButton from '../components/ui/SecondaryButton';
-import useAccountStore from '../hooks/useAccountStore';
-import useLoginFormStore from '../hooks/useLoginFormStore';
+import Input from '../components/ui/Input.jsx';
+import PrimaryButton from '../components/ui/PrimaryButton.jsx';
+import SecondaryButton from '../components/ui/SecondaryButton.jsx';
+import useAccountStore from '../hooks/useAccountStore.js';
+import useLoginFormStore from '../hooks/useLoginFormStore.js';
 
 const HorizontalLine = styled.hr`
   width: 400px;

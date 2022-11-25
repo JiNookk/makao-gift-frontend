@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import dateFormat from '../dateFormat';
-import numberFormat from '../numberFormat';
+import dateFormat from '../dateFormat.js';
+import numberFormat from '../numberFormat.js';
 
 const Container = styled.div`
   margin-top: 10rem;

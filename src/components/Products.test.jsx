@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import { productsStore } from '../stores/ProductsStore';
-import Products from './Products';
+import { productsStore } from '../stores/ProductsStore.js';
+import Products from './Products.jsx';
 
 const navigate = jest.fn();
 

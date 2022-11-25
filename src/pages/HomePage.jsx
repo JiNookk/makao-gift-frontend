@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Container from '../components/ui/Container';
+import Container from '../components/ui/Container.jsx';
 
 const HomeContainer = styled(Container)`
   flex-direction: row;

@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Orders from '../components/Orders';
-import Container from '../components/ui/Container';
-import useOrdersStore from '../hooks/useOrdersStore';
+import Orders from '../components/Orders.jsx';
+import Container from '../components/ui/Container.jsx';
+import useOrdersStore from '../hooks/useOrdersStore.js';
 
 export default function OrdersPage() {
   const navigate = useNavigate();

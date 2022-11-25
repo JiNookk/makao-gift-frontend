@@ -3,11 +3,11 @@ import {
   fireEvent, render, screen, waitFor,
 } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
-import { accountStore } from '../stores/AccountStore';
-import { ordersStore } from '../stores/OrdersStore';
-import { productsStore } from '../stores/ProductsStore';
-import defaultTheme from '../styles/defaultTheme';
-import ProductPage from './ProductPage';
+import { accountStore } from '../stores/AccountStore.js';
+import { ordersStore } from '../stores/OrdersStore.js';
+import { productsStore } from '../stores/ProductsStore.js';
+import defaultTheme from '../styles/defaultTheme.js';
+import ProductPage from './ProductPage.jsx';
 
 const context = describe;
 

@@ -4,18 +4,18 @@ import { useLocalStorage } from 'usehooks-ts';
 
 import { Reset } from 'styled-reset';
 import { ThemeProvider } from 'styled-components';
-import defaultTheme from './styles/defaultTheme';
-import GlobalStyle from './styles/GlobalStyle';
+import defaultTheme from './styles/defaultTheme.js';
+import GlobalStyle from './styles/GlobalStyle.js';
 
-import Header from './components/Header';
-import HomePage from './pages/HomePage';
-import OrdersPage from './pages/OrdersPage';
-import ProductsPage from './pages/ProductsPage';
-import ProductPage from './pages/ProductPage';
-import OrderPage from './pages/OrderPage';
-import OrderDetailPage from './pages/OrderDetailPage';
-import SignUpPage from './pages/SignUpPage';
-import LoginPage from './pages/LoginPage';
+import Header from './components/Header.jsx';
+import HomePage from './pages/HomePage.jsx';
+import OrdersPage from './pages/OrdersPage.jsx';
+import ProductsPage from './pages/ProductsPage.jsx';
+import ProductPage from './pages/ProductPage.jsx';
+import OrderPage from './pages/OrderPage.jsx';
+import OrderDetailPage from './pages/OrderDetailPage.jsx';
+import SignUpPage from './pages/SignUpPage.jsx';
+import LoginPage from './pages/LoginPage.jsx';
 
 import { apiService } from './services/ApiService';
 

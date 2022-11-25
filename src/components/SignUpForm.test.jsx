@@ -2,9 +2,9 @@ import {
   fireEvent, render, screen, waitFor,
 } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
-import defaultTheme from '../styles/defaultTheme';
+import defaultTheme from '../styles/defaultTheme.js';
 
-import SignUpForm from './SignUpForm';
+import SignUpForm from './SignUpForm.jsx';
 
 const context = describe;
 

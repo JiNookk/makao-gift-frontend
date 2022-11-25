@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
-import PrimaryButton from '../components/ui/PrimaryButton';
+import PrimaryButton from '../components/ui/PrimaryButton.jsx';
 
 const Field = styled.div`
   margin-block: 1.5rem;

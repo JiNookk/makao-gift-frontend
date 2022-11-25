@@ -1,11 +1,11 @@
 /* eslint-disable react/button-has-type */
 import { useEffect } from 'react';
 import styled from 'styled-components';
-import Pages from '../components/Pages';
-import Products from '../components/Products';
-import Container from '../components/ui/Container';
-import Panel from '../components/ui/Panel';
-import useProductsStore from '../hooks/useProductsStore';
+import Pages from '../components/Pages.jsx';
+import Products from '../components/Products.jsx';
+import Container from '../components/ui/Container.jsx';
+import Panel from '../components/ui/Panel.jsx';
+import useProductsStore from '../hooks/useProductsStore.js';
 
 const PanelText1 = styled.p`
   margin-block-end: 1.5rem;

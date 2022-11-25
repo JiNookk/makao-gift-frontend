@@ -1,9 +1,9 @@
-import Item from './ui/Item';
-import ItemContainer from './ui/ItemContainer';
-import ItemImage from './ui/ItemImage';
-import Manufacturer from './ui/Manufacturer';
-import Price from './ui/Price';
-import Title from './ui/Title';
+import Item from './ui/Item.jsx';
+import ItemContainer from './ui/ItemContainer.jsx';
+import ItemImage from './ui/ItemImage.jsx';
+import Manufacturer from './ui/Manufacturer.jsx';
+import Price from './ui/Price.jsx';
+import Title from './ui/Title.jsx';
 
 export default function Orders({ orders, onClick }) {
   const handleNavigate = (id) => {

@@ -1,8 +1,8 @@
 /* eslint-disable react/button-has-type */
 import { useEffect } from 'react';
-import Product from '../components/Product';
-import usePageStore from '../hooks/usePageStore';
-import useProductsStore from '../hooks/useProductsStore';
+import Product from '../components/Product.jsx';
+import usePageStore from '../hooks/usePageStore.js';
+import useProductsStore from '../hooks/useProductsStore.js';
 
 export default function ProductPage() {
   const pageStore = usePageStore();

@@ -1,4 +1,4 @@
-import LoginFormStore from './LoginFormStore';
+import LoginFormStore from './LoginFormStore.js';
 
 describe('LoginFormStore', () => {
   let loginFormStore;

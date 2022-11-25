@@ -4,9 +4,9 @@ import {
   render, screen, waitFor,
 } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
-import defaultTheme from '../styles/defaultTheme';
+import defaultTheme from '../styles/defaultTheme.js';
 
-import LoginForm from './LoginForm';
+import LoginForm from './LoginForm.jsx';
 
 const context = describe;
 

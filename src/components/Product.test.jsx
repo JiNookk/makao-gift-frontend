@@ -2,8 +2,8 @@ import {
   render, screen, waitFor,
 } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
-import defaultTheme from '../styles/defaultTheme';
-import Product from './Product';
+import defaultTheme from '../styles/defaultTheme.js';
+import Product from './Product.jsx';
 
 const navigate = jest.fn();
 

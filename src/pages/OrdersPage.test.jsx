@@ -2,7 +2,7 @@ import {
   render, screen, waitFor,
 } from '@testing-library/react';
 
-import OrdersPage from './OrdersPage';
+import OrdersPage from './OrdersPage.jsx';
 
 const navigate = jest.fn();
 

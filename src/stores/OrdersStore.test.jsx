@@ -1,5 +1,5 @@
 import { waitFor } from '@testing-library/react';
-import OrdersStore from './OrdersStore';
+import OrdersStore from './OrdersStore.js';
 
 const context = describe;
 

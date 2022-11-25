@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLocalStorage } from 'usehooks-ts';
-import useAccountStore from './useAccountStore';
-import useOrdersStore from './useOrdersStore';
-import useProductsStore from './useProductsStore';
+import useAccountStore from './useAccountStore.js';
+import useOrdersStore from './useOrdersStore.js';
+import useProductsStore from './useProductsStore.js';
 
 export default function useProduct() {
   const [accessToken] = useLocalStorage('accessToken');

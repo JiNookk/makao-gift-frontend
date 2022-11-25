@@ -1,4 +1,4 @@
-import PageStore from './PageStore';
+import PageStore from './PageStore.js';
 
 describe('PageStore', () => {
   let pageStore;

@@ -1,4 +1,4 @@
-import OrderStore from './OrderStore';
+import OrderStore from './OrderStore.js';
 
 describe('OrderStore', () => {
   let orderStore;

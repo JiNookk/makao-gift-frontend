@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Button from './Button';
+import Button from './Button.jsx';
 
 const SecondaryButton = styled(Button)`
     background: ${(props) => props.theme.colors.secondary};

@@ -2,9 +2,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import SignUpForm from '../components/SignUpForm';
-import Container from '../components/ui/Container';
-import SignUpSuccessPage from './SignUpSuccessPage';
+import SignUpForm from '../components/SignUpForm.jsx';
+import Container from '../components/ui/Container.jsx';
+import SignUpSuccessPage from './SignUpSuccessPage.jsx';
 
 const SignUpContainer = styled(Container)`
   padding-bottom: 100px;

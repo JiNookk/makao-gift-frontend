@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 
-import Orders from './Orders';
+import Orders from './Orders.jsx';
 
 const context = describe;
 
